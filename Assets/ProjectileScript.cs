@@ -21,23 +21,23 @@ public class ProjectileScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        StartCoroutine(DelayedHit());
+        StartCoroutine(DelayedHit(col.collider));
     }
 
-    private IEnumerator DelayedHit()
+    private IEnumerator DelayedHit(Collider2D col)
     {
         yield return new WaitForSeconds(hitDelay);
-        Hit();
+        Hit(col);
     }
-    
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-        Hit();
+        Hit(col);
     }
 
-    private void Hit()
+    private void Hit(Collider2D col)
     {
+        Destroy(col.gameObject);
         lives -= 1;
         if (lives <= 0)
             Destroy(gameObject);

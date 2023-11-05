@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +5,8 @@ public class PlayerScript : MonoBehaviour
 {
     public List<GameObject> weapons;
     public Rigidbody2D body;
+    public float speed;
     
-    private float _walkingSpeed = 4f;
     private Vector2 _movement;
 
     private void Start()
@@ -24,6 +23,6 @@ public class PlayerScript : MonoBehaviour
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
         var clampedMovement = Vector2.ClampMagnitude(_movement, 1);
-        body.MovePosition(body.position + clampedMovement * (_walkingSpeed * Time.fixedDeltaTime));
+        body.MovePosition(body.position + clampedMovement * (speed * Time.fixedDeltaTime));
     }
 }

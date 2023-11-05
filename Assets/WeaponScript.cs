@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 public class WeaponScript : MonoBehaviour
 {
-    private float _timer;
+    private Timer _timer;
     public float speed = 2;
     public TargetingType targetingType = TargetingType.Close;
 
@@ -14,26 +14,21 @@ public class WeaponScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _timer = new Timer(speed);
         Shoot();
     }
     void Update()
     {
-        if (_timer < speed)
-            _timer += Time.deltaTime;
-        else
-        {
-            _timer = 0;
-            Shoot();
-        }
+        _timer.Tick(Shoot);
     }
     
-    private void Shoot()
+    private bool Shoot()
     {
             var transform1 = transform;
             var pro = Instantiate(projectile, transform1.position, transform1.rotation);
             var script = pro.GetComponent<ProjectileScript>();
             script.direction = (GetTargetPosition() - transform.position).normalized;
-            script.speed = 5;
+            return true;
     }
 
     private Vector3 GetTargetPosition()

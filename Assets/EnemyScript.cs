@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     public Rigidbody2D body;
-    public float walkingSpeed = 3;
+    public float walkingSpeed;
     private Rigidbody2D _player;
     
 
@@ -12,9 +12,10 @@ public class EnemyScript : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
-        var clampedMovement = Vector2.ClampMagnitude(_player.position - body.position, 1);
-        body.MovePosition(body.position + clampedMovement * (walkingSpeed * Time.fixedDeltaTime));
+        var position = body.position;
+        var clampedMovement = (_player.position - position).normalized;
+        body.MovePosition(position + clampedMovement * (walkingSpeed * Time.fixedDeltaTime));
     }
 }
