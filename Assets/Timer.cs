@@ -3,21 +3,24 @@ using UnityEngine;
 
 public class Timer
 {
-    private readonly float _speed;
-    private float _timer;
+    private readonly float _baseThreshold;
+    private float _currentTick;
 
-    public Timer(float speed)
+    public Timer(float baseThreshold)
     {
-        _speed = speed;
+        _baseThreshold = baseThreshold;
+        Modifier = 1;
     }
+
+    public float Modifier { get; set; }
 
     public void Tick<T>(Func<T> timerFunc)
     {
-        if (_timer < _speed)
-            _timer += Time.deltaTime;
+        if (_currentTick < _baseThreshold / Modifier)
+            _currentTick += Time.deltaTime;
         else
         {
-            _timer = 0;
+            _currentTick = 0;
             timerFunc();
         }
     }

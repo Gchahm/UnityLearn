@@ -123,6 +123,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 4924221960028692963, guid: 8980482a2e868374999e003bf928bc01, type: 3}
   body: {fileID: -486067125700681357}
+  baseSpeed: 1
 --- !u!50 &-486067125700681357
 Rigidbody2D:
   serializedVersion: 4

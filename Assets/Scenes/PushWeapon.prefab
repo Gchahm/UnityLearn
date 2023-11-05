@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa76d892f5ae4d4eb6ef4785402e1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   targetingType: 2
+  baseSpeed: 4
+  baseProjectileSpeed: 1
   projectile: {fileID: 8553326888108438050, guid: 96e8d831523d6d948b00b9bf8f745cf3, type: 3}
