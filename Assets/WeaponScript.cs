@@ -33,7 +33,7 @@ public class WeaponScript : MonoBehaviour
             var pro = Instantiate(projectile, transform1.position, transform1.rotation);
             var script = pro.GetComponent<ProjectileScript>();
             script.direction = (GetTargetPosition() - transform.position).normalized;
-            script.speed = 1;
+            script.speed = 5;
     }
 
     private Vector3 GetTargetPosition()
@@ -48,7 +48,7 @@ public class WeaponScript : MonoBehaviour
             .OrderBy(enemy =>
             {
                 var enemyPosition = transform.position;
-                return (enemyPosition.x - position.x) + (enemyPosition.y - position.y);
+                return Math.Sqrt(Math.Pow(position.x - enemyPosition.x, 2) + Math.Pow(position.y - enemyPosition.y, 2));
             })
             .ToList();
     

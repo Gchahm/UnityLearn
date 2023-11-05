@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8805808453035472658}
   - component: {fileID: 8440087280549211860}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: PushWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  targetingType: 3
-  projectile: {fileID: 8553326888108438050, guid: b5251f9d65cf84748b66e034ea2d17f2, type: 3}
+  targetingType: 2
+  projectile: {fileID: 8553326888108438050, guid: 96e8d831523d6d948b00b9bf8f745cf3, type: 3}
